@@ -122,14 +122,17 @@
           </div>
 
         </nav>
+        <div class="msite_shop_list">
+          <div class="shop_header">
+            <i class="iconfont icon-xuanxiang"></i>
+            <span class="shop_header_title">附近商家</span>
+          </div>
+          <ShopList/>
+        </div>
       </div>
+
     </div>
-    <div class="msite_shop_list">
-      <div class="shop_header">
-        <i class="iconfont icon-xuanxiang"></i>
-        <span class="shop_header_title">附近商家</span>
-      </div>
-    </div>
+
 
   </div>
 </template>
@@ -138,10 +141,11 @@
 import HeaderTop from "../../components/HeaderTop/HeaderTop";
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
-
+import ShopList from "../../components/ShopList/ShopList";
 export default {
   components: {
-    HeaderTop
+    HeaderTop,
+    ShopList
   },
   mounted() {
     new Swiper('.swiper-container', {
@@ -150,7 +154,8 @@ export default {
         el: '.swiper-pagination'
       }
     })
-  }
+  },
+
 }
 </script>
 
@@ -208,6 +213,20 @@ export default {
         .swiper-pagination
           &.swiper-pagination-bullet-active
             background #02a774
+    .msite_shop_list
+      top-border-1px(#e4e4e4)
+      margin-top 10px
+      background #fff
+      .shop_header
+        padding 10px 10px 0
+        .shop_header_title
+          font-size 14px
+          color #999
+          line-height 20px
+
+
+
+
 
 
 </style>
