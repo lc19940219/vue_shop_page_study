@@ -65,7 +65,7 @@ export default {
     &.on
       color #02a774
 
-    .item_icon
+    span
       font-size 12px
       margin-top 2px
       margin-bottom 2px
