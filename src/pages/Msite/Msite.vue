@@ -4,9 +4,12 @@
       <router-link to="/search" slot="left" class="header_search">
         <i class="iconfont icon-sousuo"/>
       </router-link>
-      <router-link to="/search" slot="right" class="header_login">
-        <span class="header_login_text">
+      <router-link :to="user._id?'/userinfo':'/login'" slot="right" class="header_login">
+        <span class="header_login_text" v-if="!user._id">
            登录|注册
+        </span>
+        <span class="header_login_text" v-else>
+           <i class="iconfont icon-person"></i>
         </span>
       </router-link>
     </HeaderTop>
@@ -72,7 +75,7 @@ export default {
     ...mapActions(['getFoodCategorys', 'getShop'])
   },
   computed: {
-    ...mapState(['address', 'categorys']),
+    ...mapState(['address', 'categorys', 'user']),
     categorysArr() {
       const {categorys} = this
       const arr = []
@@ -115,8 +118,9 @@ export default {
     top 45px
     bottom 46px
     width 100%
-    overflow-x:hidden;
-    overflow-y:scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
     .msite_nav
       bottom-border-1px(#e4e4e4)
       height 200px

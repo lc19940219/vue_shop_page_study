@@ -1,5 +1,5 @@
-import {RECEIVE_ADDRESS, RECEIVE_CATEGORYS, RECEIVE_SHOPS} from "./mutation-type";
-import {reqAddress, reqShops, reqFoodCategorys} from "../api";
+import {RECEIVE_ADDRESS, RECEIVE_CATEGORYS, RECEIVE_SHOPS,RECEIVE_USER_INFO} from "./mutation-type";
+import {reqAddress, reqShops, reqFoodCategorys,reqUserInfo} from "../api";
 
 export default {
   async getAddress({commit, state}) {
@@ -26,6 +26,18 @@ export default {
     if (result.code === 0) {
       const categorys=result.data
       commit(RECEIVE_CATEGORYS, {categorys})
+    }
+  },
+  recordUser({commit, state},user) {
+
+    commit(RECEIVE_USER_INFO, {user})
+  },
+  async getUserInfo({commit, state}) {
+
+    const result = await reqUserInfo()
+    if (result.code === 0) {
+      const user=result.data
+      commit(RECEIVE_USER_INFO, {user})
     }
   }
 }
