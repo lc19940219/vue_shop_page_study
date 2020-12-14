@@ -2,17 +2,17 @@
   <div class="profile">
     <HeaderTop title="我的"/>
     <div class="profile_number">
-      <router-link to="/login" class="profile_link">
+      <router-link :to="user._id?'/userinfo':'/login'" class="profile_link">
         <div class="profile_img">
           <i class="iconfont icon-person"></i>
         </div>
         <div class="profile_userinfo">
-          <p class="user_info_top">登录/注册</p>
+          <p class="user_info_top" v-if="!user.phone">{{user.name||'登录/注册'}}</p>
           <p>
             <span class="user_icon">
               <i class="iconfont icon-shouji icon-mobile"></i>
             </span>
-            <span class="icon-mobile-number">暂无绑定手机号</span>
+            <span class="icon-mobile-number" >{{ userInfo.phone ||"暂无绑定手机号" }}</span>
           </p>
         </div>
         <span class="arrow">
@@ -102,11 +102,14 @@
 <script>
 import HeaderTop from "../../components/HeaderTop/HeaderTop";
 import App from "../../App";
-
+import {mapState} from 'vuex'
 export default {
   components: {
     App,
     HeaderTop
+  },
+  computed:{
+    ...mapState(['user'])
   }
 }
 </script>
