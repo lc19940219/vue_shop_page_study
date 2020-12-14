@@ -1,4 +1,9 @@
-import {RECEIVE_ADDRESS, RECEIVE_CATEGORYS, RECEIVE_SHOPS,RECEIVE_USER_INFO} from "./mutation-type";
+import {
+  RECEIVE_ADDRESS,
+  RECEIVE_CATEGORYS,
+  RECEIVE_SHOPS,
+  RECEIVE_USER_INFO,
+  RECEIVE_SEARCH_SHOPS} from "./mutation-type";
 
 export default {
   [RECEIVE_ADDRESS](state, {address}) {
@@ -13,5 +18,7 @@ export default {
   [RECEIVE_USER_INFO](state, {user}) {
     state.user = user
   },
-
+  [RECEIVE_SEARCH_SHOPS](state, {searchShops}) {
+    state.searchShops = searchShops
+  },
 }
