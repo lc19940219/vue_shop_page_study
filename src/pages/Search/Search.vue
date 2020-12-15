@@ -82,6 +82,7 @@ export default {
   width 100%
   height 100%
   overflow auto
+  position relative
   background-color #fff
 
   .search_form
@@ -121,6 +122,7 @@ export default {
         font-size 16px
         border 2px solid #02a774
   .list
+    margin-top 20px
     .list_container
       background-color #fff
       .list_li
@@ -150,6 +152,9 @@ export default {
     text-align center
     font-size 16px
     line-height 16px
+    position absolute
+    top 120px
+    width 100%
 
 
 

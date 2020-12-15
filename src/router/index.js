@@ -5,7 +5,7 @@ import Search from '../pages/Search/Search.vue'
 import Order from '../pages/Order/Order.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import Login from "../pages/Login/Login";
-
+import Shop from "../pages/Shop/Shop";
 Vue.use(Router)
 
 export default new Router({
@@ -42,6 +42,10 @@ export default new Router({
     {
       path: '/login',
       component: Login,
+    },
+    {
+      path: '/shop',
+      component: Shop,
     },
     {
       path: '/',

@@ -12,7 +12,7 @@
             <span class="user_icon">
               <i class="iconfont icon-shouji icon-mobile"></i>
             </span>
-            <span class="icon-mobile-number" >{{ userInfo.phone ||"暂无绑定手机号" }}</span>
+            <span class="icon-mobile-number" >{{ user.phone ||"暂无绑定手机号" }}</span>
           </p>
         </div>
         <span class="arrow">
