@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store/index'
 import {Button } from 'mint-ui'
+import './mock/mockServer'
 Vue.config.productionTip = false
 Vue.component(Button.name,Button)
 // Vue.component(MessageBox.name,MessageBox)

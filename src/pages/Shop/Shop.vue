@@ -1,12 +1,19 @@
 <template>
   <div>
-Shop
+    <ShopHeader/>
   </div>
 </template>
 
 <script>
-export default {
+import ShopHeader from "../../components/ShopHeader/ShopHeader";
 
+export default {
+  components: {
+    ShopHeader
+  },
+  mounted() {
+    this.$store.dispatch('getShopInfo')
+  }
 }
 </script>
 

@@ -3,7 +3,10 @@ import {
   RECEIVE_CATEGORYS,
   RECEIVE_SHOPS,
   RECEIVE_USER_INFO,
-  RECEIVE_SEARCH_SHOPS} from "./mutation-type";
+  RECEIVE_SEARCH_SHOPS,
+  RECEIVE_INFO,
+  RECEIVE_RATINGS,
+  RECEIVE_GOODS,} from "./mutation-type";
 
 export default {
   [RECEIVE_ADDRESS](state, {address}) {
@@ -20,5 +23,16 @@ export default {
   },
   [RECEIVE_SEARCH_SHOPS](state, {searchShops}) {
     state.searchShops = searchShops
+  },
+  [RECEIVE_INFO](state, {info}) {
+    state.info = info
+  },
+
+  [RECEIVE_RATINGS](state, {ratings}) {
+    state.ratings = ratings
+  },
+
+  [RECEIVE_GOODS](state, {goods}) {
+    state.goods = goods
   },
 }
