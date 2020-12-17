@@ -5,7 +5,7 @@
         <i class="iconfont icon-arrow_left"></i>
       </a>
     </div>
-    <div class="shop-content">
+    <div class="shop-content" @click="toggleShopShow">
       <img :src="info.avatar" class="content-image">
       <div class="header-content">
         <h2 class="content-title">
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <div class="shop-header-discounts">
+    <div class="shop-header-discounts" @click="toggleSupportShow" v-if="info.supports">
       <div class="discounts-left">
         <div class="activity" :class="supportClasses[info.supports[0].type]">
           <span class="content-tag">
@@ -41,29 +41,33 @@
 
     </div>
     <transition name="fade">
-      <div class="shop-brief-model">
+      <div class="shop-brief-model" v-show="shopShow">
         <div class="brief-model-content">
           <h2 class="content-title">
             <span class="content-tag">
               <span class="mini-tag">品牌</span>
             </span>
-            <span class="content-name">xxx</span>
+            <span class="content-name">{{ info.name }}</span>
           </h2>
           <ul class="brief-model-msg">
             <li>
-              <h3>xxx</h3>
+              <h3>{{ info.score }}</h3>
               <p>评分</p>
             </li>
             <li>
-              <h3>xxx</h3>
+              <h3>{{info.sellCount}}单</h3>
               <p>月售</p>
             </li>
             <li>
-              <h3>xxx</h3>
-              <p>约xxx分钟</p>
+              <h3>{{info.description}}</h3>
+              <p>约{{info.deliveryTime}}分钟</p>
             </li>
             <li>
-              <h3>xxx</h3>
+              <h3>{{info.deliveryPrice}}元</h3>
+              <p>配送费用</p>
+            </li>
+            <li>
+              <h3>{{info.distance}}</h3>
               <p>距离</p>
             </li>
           </ul>
@@ -73,7 +77,7 @@
           <div class="brief-modal-notice">
             {{ info.bulletin }}
           </div>
-          <div class="mask-footer">
+          <div class="mask-footer" @click="toggleShopShow">
             <span class="iconfont icon-close"></span>
           </div>
         </div>
@@ -81,7 +85,7 @@
       </div>
     </transition>
     <transition name="fade">
-      <div class="activity-sheet">
+      <div class="activity-sheet" v-show="supportShow">
         <div class="activity-sheet-content">
           <h2 class="activity-sheet-title">
             优惠活动
@@ -100,7 +104,7 @@
             </li>
 
           </ul>
-          <div class="activity-sheet-close">
+          <div class="activity-sheet-close" @click="toggleSupportShow">
             <span class="iconfont icon-close"></span>
           </div>
         </div>
@@ -119,11 +123,22 @@ export default {
   data() {
     return {
       supportClasses: ['activity-green', 'activity-red', 'activity-orange'],
+      shopShow: false,
+      supportShow: false
 
     }
   },
   computed: {
     ...mapState(['info'])
+  },
+  methods: {
+    toggleShopShow() {
+      this.shopShow = !this.shopShow
+    },
+
+    toggleSupportShow() {
+      this.supportShow = !this.supportShow
+    }
   }
 }
 </script>
@@ -317,13 +332,13 @@ export default {
 
 
   .shop-brief-model
-    display none
+
     position fixed
     top 0
     bottom 0
     left 0
     right 0
-    //display flex
+    display flex
     justify-content center
     align-items center
     z-index 52
