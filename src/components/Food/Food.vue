@@ -4,7 +4,7 @@
       <div class="image-header">
         <img :src="food.image">
         <p class="foodpanel-desc">{{ food.info }}</p>
-        <div class="back">
+        <div class="back" @click="toggleShow">
           <i class="iconfont icon-arrow_left"></i>
         </div>
       </div>
@@ -20,16 +20,17 @@
           <span class="old" v-if="food.oldPrice">￥{{ food.oldPrice }}</span>
         </div>
         <div class="cartcontrol-wrapper">
-          购物车
+         <Cart :food="food"/>
         </div>
       </div>
-    </div>
 
+    </div>
+    <div class="food-cover" @click="toggleShow"></div>
   </div>
 </template>
 
 <script>
-
+import Cart from "../Cart/Cart";
 export default {
   props: {
     food: Object
@@ -43,6 +44,8 @@ export default {
     toggleShow() {
       this.foodShow = !this.foodShow
     }
+  },components:{
+    Cart
   }
 }
 </script>
@@ -54,9 +57,9 @@ export default {
   left 0
   top 0
   bottom 48px
-  z-index 100%
+  z-index 101
   width 100%
-  background red
+
   &.fade-enter-active,&.fade-leave-active
     transform opacity 0.5s
   &.fade-enter,&.fade-leave-to
@@ -85,7 +88,68 @@ export default {
       .foodpanel-desc
         font-size 10px
         color #ddd
+        position absolute
+        left 0
+        bottom 10px
+        right 0
+        padding 0px 10px 10px
+      .back
+        position absolute
+        top 10px
+        left 0
+        .icon-arrow_left
+          font-size 20px
+          color #fff
+          display block
+          padding 10px
 
 
 
+    .content
+      padding 18px
+      position relative
+      .title
+        font-size 14px
+        line-height 14px
+        margin-bottom 8px
+        font-weight 700
+        color rgb(7,17,27)
+      .detail
+        margin-bottom 18px
+        font-size 0
+        height 10px
+        line-height 10px
+        .sell-count,.rating
+          font-size 10px
+          color rgb(147,153,159)
+        .sell-count
+          margin-right 12px
+
+
+      .price
+        line-height 24px
+        font-weight 700
+        .now
+          margin-right 8px
+          font-size 14px
+          color rgb(240,20,20)
+        .old
+          font-size 10px
+          text-decoration line-through
+          color rgb(147, 153, 159)
+
+
+
+      .cartcontrol-wrapper
+        position absolute
+        right 12px
+        bottom 12px
+  .food-cover
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom -48px
+    background-color rgba(0, 0, 0, 0.5)
+    z-index 55
 </style>

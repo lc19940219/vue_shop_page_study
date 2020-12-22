@@ -7,6 +7,8 @@ import {
   RECEIVE_GOODS,
   RECEIVE_RATINGS,
   RECEIVE_INFO,
+  INCREMENT_FOOD_COUNT,
+  DECREMENT_FOOD_COUNT
 } from "./mutation-type";
 import {
   reqAddress, reqShops, reqFoodCategorys,
@@ -92,4 +94,11 @@ export default {
       callback && callback()
     }
   },
+  updateFoodCount({commit},{isAdd,food}){
+    if (isAdd){
+      commit(INCREMENT_FOOD_COUNT, {food})
+    }else{
+      commit(DECREMENT_FOOD_COUNT, {food})
+    }
+  }
 }

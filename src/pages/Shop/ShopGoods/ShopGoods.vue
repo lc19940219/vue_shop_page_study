@@ -36,6 +36,9 @@
                    <span class="now">￥{{ food.price }}</span>
                    <span class="old" v-if="food.oldPrice">{{ food.oldPrice }}</span>
                  </div>
+                 <div class="cart-wrapper">
+                   <Cart :food="food"/>
+                 </div>
                </div>
 
              </li>
@@ -43,6 +46,7 @@
          </li>
        </ul>
      </div>
+     <ShopCart/>
    </div>
    <Food :food="food" ref="food"/>
  </div>
@@ -53,6 +57,8 @@
 import {mapState} from 'vuex'
 import BScroll from 'better-scroll'
 import Food from "../../../components/Food/Food";
+import Cart from "../../../components/Cart/Cart";
+import ShopCart from "../../../components/ShopCart/ShopCart";
 export default {
   data() {
     return {
@@ -62,7 +68,7 @@ export default {
     }
   },
   components:{
-    Food
+    Food,Cart,ShopCart
   },
   computed: {
     ...mapState(['goods']),
@@ -242,4 +248,8 @@ export default {
             color rgb(147, 153, 159)
 
 
+        .cart-wrapper
+          position absolute
+          right 0
+          bottom 12px
 </style>
